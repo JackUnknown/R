@@ -1,0 +1,49 @@
+---
+title: "first"
+output: html_document
+date: "2026-03-28"
+---
+
+Load a dataset
+```{r}
+setwd("D:/Training/Academy/R Course (C-DAC)/Datasets")
+cars93 <- read.csv("Cars93.csv")
+head(cars93)
+```
+Freqency count of Type of cars
+```{r}
+table(cars93$Type)
+```
+```{r}
+library(tidyverse)
+mean_price <- cars93 %>% 
+                group_by(Type) %>% 
+                summarise(mu_price=mean(Price))
+
+ggplot(data = mean_price, 
+       aes(x=Type,y=mu_price, fill=Type))+
+  geom_bar(stat = 'identity')+
+  labs(y="Mean Price", x="Car Type")
+```
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv("D:/Training/Academy/R Course (C-DAC)/Datasets/Cars93.csv")
+df.columns
+```
+
+```{python}
+plt.scatter(df['MPG.city'], df['Price'])
+plt.show()
+```
+
+```{python}
+d = [78, 45, 34]
+print(d[0])
+```
+
+```{python}
+s = {'a':23, 'b':56}
+print(s['b'])
+```
+
